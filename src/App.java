@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOError;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -59,6 +61,15 @@ public class App {
   }
 
   public static void writeFile () {
+    try {
+      tryWriteFile();
+    } catch (IOException e) {
+      System.err.println("Error writing to file");
+      System.exit(500);
+    }
+  }
+
+  public static void tryWriteFile () throws IOException {
     FileWriter fw = new FileWriter("data.txt", true);
     PrintWriter pw = new PrintWriter(fw);
 
