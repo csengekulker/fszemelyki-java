@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -57,10 +58,15 @@ public class App {
 
   }
 
-  // public static void writeFile () {
-  //   FileWriter file = new FileWriter("data.txt", true);
+  public static void writeFile () {
+    FileWriter fw = new FileWriter("data.txt", true);
+    PrintWriter pw = new PrintWriter(fw);
 
-  // }
+    String dataString = splitDataList();
+
+    pw.print(dataString);
+
+  }
 }
 
 
