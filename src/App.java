@@ -1,17 +1,47 @@
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class App {
   public static void main(String[] args) throws Exception {
     System.out.println("2022.03.23, Balogh Csenge, Szoft_I_N");
     System.out.println("Személyek adatainak bekérése");
+
+    tryGetData();
   }
 
   public static void getData () {
-    try {
+    
 
-    } catch () {
 
+  }
+
+
+  public static String tryGetData() {
+    Scanner sc = new Scanner(System.in);
+
+    String data = null;
+
+    String[] infos = {
+      "Név",
+      "Település",
+      "Cím",
+      "Havi jövedelem"
+    };
+
+    for(int i = 0; i<infos.length;i++) {
+      System.out.print(infos[i] + ": ");
+      data = sc.nextLine();
     }
-
-  public static void tryGetData() {
+    // get data from user
+    sc.close();
+    return data;
         
   }
+
+  public static void writeData () {
+    //write to file
+  }
 }
+
+
