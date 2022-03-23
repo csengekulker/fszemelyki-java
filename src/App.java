@@ -1,5 +1,7 @@
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -9,7 +11,42 @@ public class App {
     System.out.println("2022.03.23, Balogh Csenge, Szoft_I_N");
     System.out.println("Személyek adatainak bekérése");
 
+    // writeFile();
+    verifyFile();
     writeFile();
+
+  }
+
+  public static Integer verifyFile() {
+    Integer lastIndex = 0;
+    try {
+      lastIndex = tryVerifyFile();
+    } catch (FileNotFoundException e) {
+      System.err.println("kurva");
+      System.exit(500);
+    }
+
+    return lastIndex;
+  }
+
+
+  public static Integer tryVerifyFile () throws FileNotFoundException {
+    File file = new File("data.txt");
+    Scanner sc = new Scanner(file); //exception
+
+    Integer lastIndex = 0;
+
+    while (sc.hasNextLine()) {
+      String values[] = sc.nextLine().split(":");
+
+      lastIndex = Integer.parseInt(values[0]);
+    }
+
+    sc.close();
+    // System.out.println(lastIndex);
+
+    return lastIndex;
+
   }
 
   public static ArrayList<String> tryGetData() {
@@ -25,22 +62,22 @@ public class App {
       "Havi jövedelem"
     };
 
-    Integer rowID = 1;
-
-    for(int i = 0; i<infos.length;i++) {
-      System.out.print(infos[i] + ": ");
+    for(int j = 0; j<infos.length;j++) {
+      System.out.print(infos[j] + ": ");
       data = sc.nextLine();
 
       dataList.add(data);
+
     }
 
-    dataList.add(0, rowID.toString());
+    Integer index = verifyFile() + 1;
+
+    dataList.add(0, index.toString());
 
     sc.close();
 
     // return data as arraylist
-    return dataList;
-    
+    return dataList; 
   }
 
   public static String splitDataList () {
