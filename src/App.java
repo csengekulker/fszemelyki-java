@@ -1,4 +1,3 @@
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,6 +25,8 @@ public class App {
       "Havi jövedelem"
     };
 
+    Integer rowID = 1;
+
     for(int i = 0; i<infos.length;i++) {
       System.out.print(infos[i] + ": ");
       data = sc.nextLine();
@@ -33,9 +34,9 @@ public class App {
       dataList.add(data);
     }
 
-    sc.close();
+    dataList.add(0, rowID.toString());
 
-    System.out.println(dataList);
+    sc.close();
 
     // return data as arraylist
     return dataList;
@@ -43,12 +44,9 @@ public class App {
   }
 
   public static String splitDataList () {
-    //write to file
     ArrayList<String> dataList = tryGetData();
 
     String dataString = String.join(", ", dataList).replace(", ", ":");
-
-    System.out.println(dataString);
 
     return dataString;
 
