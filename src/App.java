@@ -17,10 +17,11 @@ public class App {
   }
 
 
-  public static String tryGetData() {
+  public static ArrayList<String> tryGetData() {
     Scanner sc = new Scanner(System.in);
 
     String data = null;
+    ArrayList<String> dataList = new ArrayList<>();
 
     String[] infos = {
       "Név",
@@ -32,11 +33,17 @@ public class App {
     for(int i = 0; i<infos.length;i++) {
       System.out.print(infos[i] + ": ");
       data = sc.nextLine();
+
+      dataList.add(data);
     }
-    // get data from user
+
     sc.close();
-    return data;
-        
+
+    System.out.println(dataList);
+
+    // return data as arraylist
+    return dataList;
+    
   }
 
   public static void writeData () {
