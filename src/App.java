@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOError;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -11,13 +10,8 @@ public class App {
     System.out.println("2022.03.23, Balogh Csenge, Szoft_I_N");
     System.out.println("Személyek adatainak bekérése");
 
-    splitDataList();
+    writeFile();
   }
-
-  public static void getData () {
-    
-  }
-
 
   public static ArrayList<String> tryGetData() {
     Scanner sc = new Scanner(System.in);
@@ -75,7 +69,13 @@ public class App {
 
     String dataString = splitDataList();
 
-    pw.print(dataString);
+    try {
+      pw.println(dataString);
+
+      pw.close();
+    } catch (Exception e) {
+      System.out.println("nem jo ");
+    }
 
   }
 }
