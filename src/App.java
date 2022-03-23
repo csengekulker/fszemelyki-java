@@ -109,7 +109,7 @@ public class App {
 
       pw.close();
     } catch (Exception e) {
-      System.out.println("nem jo ");
+      System.out.println("Something went wrong");
     }
 
   }
