@@ -1,4 +1,5 @@
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -7,13 +8,11 @@ public class App {
     System.out.println("2022.03.23, Balogh Csenge, Szoft_I_N");
     System.out.println("Személyek adatainak bekérése");
 
-    tryGetData();
+    splitDataList();
   }
 
   public static void getData () {
     
-
-
   }
 
 
@@ -46,9 +45,22 @@ public class App {
     
   }
 
-  public static void writeData () {
+  public static String splitDataList () {
     //write to file
+    ArrayList<String> dataList = tryGetData();
+
+    String dataString = String.join(", ", dataList).replace(", ", ":");
+
+    System.out.println(dataString);
+
+    return dataString;
+
   }
+
+  // public static void writeFile () {
+  //   FileWriter file = new FileWriter("data.txt", true);
+
+  // }
 }
 
 
